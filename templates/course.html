@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Career Accelerator Program — Career Connect{% endblock %}
+
+{% block content %}
+<div class="course-page">
+
+  <!-- Section 1: Hero Banner (jb) -->
+  <section class="container text-center py-24 mx-auto px-4">
+    <header class="bg-gradient-course flex flex-col-reverse md:flex-row items-start justify-start md:items-center md:justify-between rounded-[30px] w-full overflow-hidden shadow-lg">
+      
+      <!-- Left Content -->
+      <div class="flex items-start justify-start py-11 px-7 sm:px-11 w-full md:w-1/2">
+        <div class="text-white text-start text-lg space-y-2 flex flex-col gap-6 justify-start items-start">
+          <h1 class="text-3xl md:text-4xl font-bold text-start tracking-tight">
+            {{ course.title if course else 'Career Accelerator Program' }}
+          </h1>
+          <div class="flex flex-col gap-4 justify-start items-start">
+            <p class="text-lg md:text-xl font-medium">Duration: {{ course.duration if course else '5-6 Weeks' }}</p>
+            <p class="text-lg md:text-xl font-medium">Availability: {{ course.availability if course else 'Live Course' }}</p>
+          </div>
+          <a href="{{ url_for('pricing') }}" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-secondary text-secondary-foreground hover:bg-secondary/80 h-11 px-8">
+            Enroll Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Graphic -->
+      <img src="{{ url_for('static', filename='images/CourseImg-DQBjLpzY.png') }}" alt="Career Accelerator Program" class="object-cover w-full md:w-1/2 max-h-[500px] lg:max-h-[450px]" />
+
+    </header>
+  </section>
+
+  <!-- Section 2: Why This Course (Mb) -->
+  <section class="container py-16 flex flex-col gap-8 justify-start items-start mx-auto px-4 mb-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-foreground">
+      <span class="text-gradient">Why</span> This Course
+    </h2>
+    <h3 class="text-xl text-muted-foreground text-start text-balance leading-relaxed max-w-4xl">
+      This course is designed to equip you with the skills and knowledge you need to excel to get placed in your desired company. Whether you're a beginner looking to get started or a seasoned professional wanting to level up your skills, this course has something to offer everyone.
+    </h3>
+
+    <ul class="list-none space-y-4 w-full flex flex-col gap-4">
+      
+      <!-- Benefit 1 -->
+      <li class="flex items-center justify-start gap-4 text-muted-foreground text-xl rounded-lg border border-border/40 bg-card shadow-sm p-6">
+        <span class="hidden sm:block shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10 text-primary">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/>
+          </svg>
+        </span>
+        <span class="text-lg sm:text-xl">Immerse in interactive sessions along with hands-on skill development.</span>
+      </li>
+
+      <!-- Benefit 2 -->
+      <li class="flex items-center justify-start gap-4 text-muted-foreground text-xl rounded-lg border border-border/40 bg-card shadow-sm p-6">
+        <span class="hidden sm:block shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10 text-primary">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/>
+          </svg>
+        </span>
+        <span class="text-lg sm:text-xl">Receive personalized career guidance and a tailored roadmap to achieve your goals.</span>
+      </li>
+
+      <!-- Benefit 3 -->
+      <li class="flex items-center justify-start gap-4 text-muted-foreground text-xl rounded-lg border border-border/40 bg-card shadow-sm p-6">
+        <span class="hidden sm:block shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10 text-primary">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/>
+          </svg>
+        </span>
+        <span class="text-lg sm:text-xl">Move from scattered efforts to a focused approach in securing your next job.</span>
+      </li>
+
+    </ul>
+
+    <h3 class="text-xl text-muted-foreground mt-4">
+      Don't miss out on this opportunity to take your skills to the next level. 
+      <a href="{{ url_for('pricing') }}" class="text-primary hover:underline text-xl font-semibold">Enroll</a> today!
+    </h3>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+  <title>{% block title %}Career Connect: Career Mentorship Platform{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body class="bg-background text-foreground antialiased min-h-screen flex flex-col">
+
+  <!-- Modular Sticky Navbar & Drawer -->
+  {% include "components/navbar.html" %}
+
+  <!-- Flash Messages & Toasts -->
+  {% include "components/flash_messages.html" %}
+
+  <!-- Main Content Block -->
+  <main class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Modular Footer -->
+  {% include "components/footer.html" %}
+
+  <!-- Floating Back-to-Top Button (E5) -->
+  <button type="button" id="back-to-top" class="fixed bottom-4 right-4 opacity-90 shadow-md inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-10 z-50 hidden" aria-label="Scroll to top">
+    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Reusable Image Modal Lightbox for Testimonials & Photos -->
+  <div id="image-modal-overlay" class="image-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="image-modal-container">
+      <button type="button" id="image-modal-close" class="image-modal-close text-white hover:text-primary transition-colors" aria-label="Close image preview">
+        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <img id="image-modal-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Enlarged review preview" />
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

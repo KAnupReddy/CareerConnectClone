@@ -1,0 +1,87 @@
+<!-- Sticky Navbar (56px / h-14, sticky top-0 z-40) -->
+<header class="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background transition-colors">
+  <div class="container h-14 px-4 w-full flex justify-between items-center mx-auto">
+    
+    <!-- Brand Logo -->
+    <div class="font-bold flex mr-auto items-center">
+      <a href="{{ url_for('index') }}" class="ml-2 font-bold text-xl flex justify-center items-center gap-1">
+        <img src="{{ url_for('static', filename='images/CareerConnect-CHv0KAkV.svg') }}" alt="CareerConnect Logo" class="h-14 dark:hidden" />
+        <img src="{{ url_for('static', filename='images/cc-logo-text-CmyEiq9O.jpg') }}" alt="CareerConnect" class="h-14 dark:hidden" />
+        <span class="hidden dark:block font-bold text-xl text-white tracking-tight">CareerConnect</span>
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger & Actions -->
+    <div class="flex md:hidden items-center gap-2">
+      <button type="button" class="theme-toggle inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9 p-0" aria-label="Toggle Theme">
+        <!-- Sun Icon (shown in dark mode) -->
+        <svg class="sun-icon hidden dark:block size-5 text-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <!-- Moon Icon (shown in light mode) -->
+        <svg class="moon-icon block dark:hidden size-5 text-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
+      <button type="button" id="mobile-menu-open" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9 px-2" aria-label="Open Navigation">
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <span class="sr-only">Menu Icon</span>
+      </button>
+    </div>
+
+    <!-- Desktop Nav Links -->
+    <nav class="hidden md:flex items-center gap-2">
+      <a href="{{ url_for('index') }}" class="text-[17px] inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 {% if request.endpoint == 'index' %}text-primary font-semibold{% else %}text-foreground/80 hover:text-foreground{% endif %}">Home</a>
+      <a href="{{ url_for('course') }}" class="text-[17px] inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 {% if request.endpoint == 'course' %}text-primary font-semibold{% else %}text-foreground/80 hover:text-foreground{% endif %}">Course</a>
+      <a href="{{ url_for('about') }}" class="text-[17px] inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 {% if request.endpoint == 'about' %}text-primary font-semibold{% else %}text-foreground/80 hover:text-foreground{% endif %}">About</a>
+      <a href="{{ url_for('contact') }}" class="text-[17px] inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 {% if request.endpoint == 'contact' %}text-primary font-semibold{% else %}text-foreground/80 hover:text-foreground{% endif %}">Contact</a>
+    </nav>
+
+    <!-- Desktop Action Buttons -->
+    <div class="hidden md:flex items-center gap-2">
+      <button type="button" class="theme-toggle inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-10 w-10 border border-input bg-background" aria-label="Toggle theme">
+        <svg class="sun-icon hidden dark:block size-5 text-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon block dark:hidden size-5 text-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
+      <a href="{{ url_for('pricing') }}" class="border inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+        Enroll Now
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile Slide-over Sheet Drawer -->
+<div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
+<aside id="mobile-drawer" class="mobile-drawer">
+  <div class="flex items-center justify-between pb-4 border-b border-border">
+    <span class="font-bold text-xl flex justify-start items-center">CareerConnect</span>
+    <button type="button" id="mobile-menu-close" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 w-9 p-0" aria-label="Close menu">
+      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <nav class="flex flex-col justify-center items-center gap-2 mt-6">
+    <a href="{{ url_for('index') }}" class="w-full text-center py-2 text-base font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors {% if request.endpoint == 'index' %}text-primary font-semibold{% endif %}">Home</a>
+    <a href="{{ url_for('course') }}" class="w-full text-center py-2 text-base font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors {% if request.endpoint == 'course' %}text-primary font-semibold{% endif %}">Course</a>
+    <a href="{{ url_for('about') }}" class="w-full text-center py-2 text-base font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors {% if request.endpoint == 'about' %}text-primary font-semibold{% endif %}">About</a>
+    <a href="{{ url_for('contact') }}" class="w-full text-center py-2 text-base font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors {% if request.endpoint == 'contact' %}text-primary font-semibold{% endif %}">Contact</a>
+    <a href="{{ url_for('pricing') }}" class="w-[110px] border inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 mt-4">
+      Enroll Now
+    </a>
+  </nav>
+</aside>
+

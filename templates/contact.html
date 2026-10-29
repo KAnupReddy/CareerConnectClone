@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us — Career Connect{% endblock %}
+
+{% block content %}
+<div class="contact-page w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+
+  <!-- Left Column: Form -->
+  <div class="container flex items-center justify-center py-12 px-4 mx-auto">
+    <div class="mx-auto grid w-[350px] gap-6">
+      
+      <div class="grid gap-2 text-center">
+        <h1 class="text-3xl font-bold tracking-tight text-foreground">Contact Us</h1>
+        <p class="text-balance text-muted-foreground text-sm">
+          Fill out the form below and we'll get back to you as soon as possible.
+        </p>
+      </div>
+
+      {% if errors %}
+        <div class="bg-destructive/15 text-destructive border border-destructive/30 rounded-md p-3 text-xs flex flex-col gap-1">
+          {% for err in errors %}
+            <p>• {{ err }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('contact') }}" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="grid gap-4">
+          
+          <!-- Name Field -->
+          <div class="grid gap-2 text-left">
+            <label for="name" class="text-sm font-medium leading-none text-foreground">Name</label>
+            <input type="text" id="name" name="name" 
+                   value="{{ form_data.name if form_data else '' }}" 
+                   placeholder="Enter your name" required
+                   class="flex h-10 w-full rounded-md border {% if errors and 'name' in error_fields|default([]) %}border-destructive ring-1 ring-destructive{% else %}border-input{% endif %} bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+
+          <!-- Email Field -->
+          <div class="grid gap-2 text-left">
+            <label for="email" class="text-sm font-medium leading-none text-foreground">Email</label>
+            <input type="email" id="email" name="email" 
+                   value="{{ form_data.email if form_data else '' }}" 
+                   placeholder="m@example.com" required
+                   class="flex h-10 w-full rounded-md border {% if errors and 'email' in error_fields|default([]) %}border-destructive ring-1 ring-destructive{% else %}border-input{% endif %} bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+
+          <!-- Message Field -->
+          <div class="grid gap-2 text-left">
+            <label for="message" class="text-sm font-medium leading-none text-foreground">Message</label>
+            <textarea id="message" name="message" 
+                      placeholder="Enter your message" required
+                      class="flex min-h-[100px] w-full rounded-md border {% if errors and 'message' in error_fields|default([]) %}border-destructive ring-1 ring-destructive{% else %}border-input{% endif %} bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary">{% if form_data %}{{ form_data.message }}{% elif prefill_message %}{{ prefill_message }}{% endif %}</textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 mt-2">
+            Submit
+          </button>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Right Column: Split Photography -->
+  <div class="hidden bg-muted lg:block">
+    <img alt="Contact Us" class="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale" height="1080" src="{{ url_for('static', filename='images/contact img-CBu579C3.jpg') }}" style="aspect-ratio: 1920/1080; object-fit: cover;" width="1920" />
+  </div>
+
+</div>
+{% endblock %}

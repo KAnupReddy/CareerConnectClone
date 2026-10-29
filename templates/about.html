@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}About Us — Career Connect{% endblock %}
+
+{% block content %}
+<div class="about-page">
+
+  <!-- Section 1: Header Hero (sb) -->
+  <header class="container py-24 sm:py-32 flex flex-col justify-start items-center mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 max-w-[30ch] text-foreground">
+      Empowering Your <span class="text-gradient">Career Journey </span>with <span class="text-gradient">Career Connect</span>
+    </h2>
+    <div class="text-center mb-8 relative overflow-hidden w-full h-[400px] md:h-[500px] flex flex-col justify-center items-center rounded-[30px] border border-border/40">
+      <h3 class="text-4xl md:text-5xl font-extrabold text-center mb-12 text-white">
+        Career <span class="text-gradient">Connect</span>
+      </h3>
+      <p class="text-white mx-auto max-w-[700px] sm:text-xl px-4">
+        Where Ambition meets endless possibilities.
+      </p>
+      <img src="{{ url_for('static', filename='images/background image1-i9_oVyB0.jpg') }}" alt="CareerConnect - Education Platform" class="object-cover h-[450px] w-full md:h-[600px] lg:h-[600px] shrink shadow-md absolute inset-0 -z-10 blur-sm brightness-[0.6] dark:brightness-[0.2] dark:grayscale" />
+    </div>
+  </header>
+
+  <!-- Section 2: Who We Are (cb) -->
+  <section class="container pb-24 pt-16 mx-auto px-4">
+    <div class="grid lg:grid-cols-[1fr,1fr] gap-8 place-items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-foreground">
+          Who We <span class="text-gradient">Are</span>
+        </h2>
+        <p class="text-muted-foreground text-xl mt-4 mb-8 leading-normal">
+          Career Connect is an innovative platform that helps students and young professionals make the transition from student to the workplace smoother. We understand the importance of having the right skills and knowledge to succeed in the job market, and our mission is to provide the necessary tools and resources to bridge the gap. We offer a variety of resources to help students and young professionals make the transition. At Career Connect, we provide a number of career services that are tailored to the needs of each individual. Our services include job search support, resume and cover letter preparation, interview coaching, and career planning.
+        </p>
+        <p class="text-muted-foreground text-xl mt-4 mb-8 leading-normal">
+          At Career Connect, we are committed to helping students, recent graduates and professionals succeed. We work tirelessly to help create a global job market where every individual has an equal opportunity to find a job that is right for them.
+        </p>
+      </div>
+      <img src="{{ url_for('static', filename='images/360-degree-prepration-of-interview.jfif-Bc8iH9oV.jpg') }}" class="object-cover h-[450px] w-full md:h-[600px] lg:h-[600px] rounded-[30px] shrink shadow-md" alt="Who We Are" />
+    </div>
+  </section>
+
+  <!-- Section 3: Our Vision (ub) -->
+  <section class="container text-center py-16 mx-auto px-4">
+    <div class="bg-muted/50 border border-border/40 rounded-lg py-12 p-8 flex flex-col gap-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground">
+        Our <span class="text-gradient">Vision</span>
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-muted-foreground leading-normal max-w-4xl mx-auto">
+        We envision a future where everyone has access to the skills and resources they need to thrive in the ever-evolving job market. We see CareerConnect as a catalyst for empowering individuals to unlock their full potential and achieve their career aspirations. By providing a comprehensive and accessible platform for learning, we aim to bridge the skills gap and create a world where education is a lifelong journey, not just a stepping stone.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: Mid-page CTA 2 (ib, id="ctaOne") -->
+  <section id="ctaOne" class="bg-muted/50 py-24 sm:py-32 my-24 border-y border-border/40">
+    <div class="container lg:grid lg:grid-cols-2 place-items-center mx-auto px-4">
+      <div class="lg:col-start-1">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 lg:mb-0 text-foreground">
+          Master your job search with our simple <span class="text-gradient">step-by-step</span> approach.
+        </h2>
+      </div>
+      <div class="space-y-4 lg:col-start-2 flex flex-col sm:flex-row gap-4">
+        <a href="{{ url_for('pricing') }}" class="w-full md:w-auto h-10 px-4 py-2 inline-flex items-center justify-center font-medium rounded-md transition-colors bg-primary text-primary-foreground hover:bg-primary/90 text-sm">
+          Enroll Now
+        </a>
+        <a href="{{ url_for('course') }}" class="w-full md:w-auto h-10 px-4 py-2 inline-flex items-center justify-center font-medium rounded-md transition-colors border border-input bg-background hover:bg-accent hover:text-accent-foreground text-sm">
+          Explore More Courses
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Testimonials Masonry / Grid (Nb, id="testimonials") -->
+  <section id="testimonials" class="container py-24 sm:py-32 mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold pb-8 text-foreground">
+      Discover What <span class="text-gradient">People Are Saying</span>
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
+      {% if testimonials %}
+        {% for t in testimonials %}
+          <div class="bg-card border border-border/40 rounded-lg p-6 hover:bg-secondary/50 duration-300 flex flex-col justify-between {% if loop.last and loop.length % 3 != 0 %}md:col-span-2 lg:col-span-1{% endif %}">
+            <div class="flex flex-row items-center gap-4 pb-4">
+              <div class="rounded-full size-10 bg-primary/20 text-primary font-bold flex items-center justify-center shrink-0">
+                {{ t['initials'] }}
+              </div>
+              <div class="flex flex-col">
+                <h3 class="text-lg font-bold text-foreground">{{ t['author_name'] }}</h3>
+                <span class="text-sm text-muted-foreground">{{ t['user_handle'] }}</span>
+              </div>
+            </div>
+            {% if t['comment'] %}
+              <p class="text-muted-foreground text-sm leading-relaxed {% if t['review_image'] %}mb-3{% endif %}">
+                {{ t['comment'] }}
+              </p>
+            {% endif %}
+            {% if t['review_image'] %}
+              <img src="{{ url_for('static', filename=t['review_image']) }}" alt="{{ t['author_name'] }} review" class="rounded-sm border border-border mt-2 w-full object-cover max-h-[220px] testimonial-zoomable" tabindex="0" role="button" aria-label="Enlarge review screenshot" />
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+
+</div>
+{% endblock %}

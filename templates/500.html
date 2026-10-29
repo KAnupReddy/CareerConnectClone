@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}500 - Server Error — Career Connect{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-28 text-center min-h-[600px] flex flex-col items-center justify-center">
+  <span class="text-7xl lg:text-9xl font-black text-destructive tracking-tight">500</span>
+  <h1 class="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl text-foreground mt-4">
+    Internal Server Error
+  </h1>
+  <p class="leading-7 text-muted-foreground max-w-[500px] mx-auto mt-4 text-base">
+    Something unexpected occurred on our server. Our team has been notified and we are working to resolve it.
+  </p>
+  <div class="mt-8 flex flex-wrap gap-4 justify-center">
+    <a href="{{ url_for('index') }}" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8">
+      Return to Homepage
+    </a>
+    <a href="{{ url_for('contact') }}" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-6">
+      Contact Us
+    </a>
+  </div>
+</div>
+{% endblock %}
